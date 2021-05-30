@@ -236,28 +236,29 @@ def wrangle_new_data(cached=False):
         Default = False, True pulls from cached csv file if wrangle data has been run before.
     '''
     if cached == False:
-
+        
+        # read in .xlsx dataset
         df = pd.read_excel('new_data.xlsx')
 
-        
+        # drop unnamed columns
         df = df.drop(columns=list(df.columns)[32:])
 
-
+        # normalize column names
         df.columns = df.columns.str.lower().str.replace(' ', '_').str.replace('/',"_").str.replace('(','').str.replace(')','')
 
-
+        # specify columns to drop
         dropcols=['url_of_image_pls_no_hotlinks', 'uid_temporary', 'name_temporary', 'description_temp', 'url_temp', \
         'supporting_document_link', 'dispositions_exclusions_internal_use,_not_for_analysis', 'foreknowledge_of_mental_illness?_internal_use,_not_for_analysis', \
         'race_with_imputations', 'name', 'imputation_probability', 'location_of_injury_address', 'location_of_death_city', 'state', 'location_of_death_county', \
         'full_address', 'latitude', 'longitude']
         
+        # drop specified columns
         df.drop(columns=dropcols, inplace=True)
         
-        
-
+        # drop remaining nulls
         df.dropna(inplace=True)
 
-
+        # convert age column to float
         df.age = df.age.astype('float64')
         
         
@@ -329,6 +330,7 @@ def wrangle_new_data(cached=False):
         
         # concat age_dummies
         df = pd.concat([df, race_dummies, unarmed_dummies, weapon_dummies, age_dummies], axis=1)
+        
         #drop remaining nulls
         df.dropna(inplace=True)
         
