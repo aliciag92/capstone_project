@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="had_no_weapon <= 0.5\ngini = 0.576\nsamples = 7356\nvalue = [762, 2748, 3846]", fillcolor="#e1d0f9"] ;
+1 [label="had_firearm <= 0.5\ngini = 0.41\nsamples = 4558\nvalue = [335, 842, 3381]", fillcolor="#a978ed"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="had_other_weapon <= 0.5\ngini = 0.175\nsamples = 1043\nvalue = [78, 21, 944]", fillcolor="#8e4de8"] ;
+1 -> 2 ;
+3 [label="gini = 0.115\nsamples = 926\nvalue = [40, 16, 870]", fillcolor="#8946e7"] ;
+2 -> 3 ;
+4 [label="gini = 0.493\nsamples = 117\nvalue = [38, 5, 74]", fillcolor="#c6a5f3"] ;
+2 -> 4 ;
+5 [label="is_hispanic <= 0.5\ngini = 0.459\nsamples = 3515\nvalue = [257, 821, 2437]", fillcolor="#b388ef"] ;
+1 -> 5 ;
+6 [label="gini = 0.469\nsamples = 3049\nvalue = [215, 757, 2077]", fillcolor="#b68df0"] ;
+5 -> 6 ;
+7 [label="gini = 0.376\nsamples = 466\nvalue = [42, 64, 360]", fillcolor="#a26dec"] ;
+5 -> 7 ;
+8 [label="fleeing <= 0.5\ngini = 0.485\nsamples = 2798\nvalue = [427, 1906, 465]", fillcolor="#85efb1"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="under 12 <= 0.5\ngini = 0.557\nsamples = 1284\nvalue = [167, 757, 360]", fillcolor="#aaf4c9"] ;
+8 -> 9 ;
+10 [label="gini = 0.57\nsamples = 1227\nvalue = [167, 700, 360]", fillcolor="#b1f5ce"] ;
+9 -> 10 ;
+11 [label="gini = 0.0\nsamples = 57\nvalue = [0, 57, 0]", fillcolor="#39e581"] ;
+9 -> 11 ;
+12 [label="12-17 <= 0.5\ngini = 0.39\nsamples = 1514\nvalue = [260, 1149, 105]", fillcolor="#73eda6"] ;
+8 -> 12 ;
+13 [label="gini = 0.413\nsamples = 1377\nvalue = [253, 1019, 105]", fillcolor="#78eda9"] ;
+12 -> 13 ;
+14 [label="gini = 0.097\nsamples = 137\nvalue = [7, 130, 0]", fillcolor="#44e688"] ;
+12 -> 14 ;
+}
